@@ -24,6 +24,11 @@
         // const titulo = <h1 style={{ color: "red" }}>Hola, bienvenido a React.js</h1>
         //componente react
         function JobCard({ data, titulo, empresa, ubicacion, descripcion }) {
+
+            function handleClick() {
+                alert(`Has aplicado al puesto de ${titulo}`);
+            }
+
             return (
                 <article className="job-listing-card"
                     data-modalidad={data.modalidad}
@@ -35,7 +40,9 @@
                         <small>{empresa} - {ubicacion}</small>
                         <p>{descripcion}</p>
                     </div>
-                    <button className="button-apply-job">
+                    <button className="button-apply-job"
+                        onClick={handleClick}
+                    >
                         Aplicar
                     </button>
                 </article>
