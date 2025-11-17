@@ -23,16 +23,36 @@
         //elemento react
         // const titulo = <h1 style={{ color: "red" }}>Hola, bienvenido a React.js</h1>
         //componente react
-        function Saludo({ nombre, colore }) {
-            return <h2 style={{ color: colore }} >Hola, {nombre}</h2>;
+        function JobCard({ data, titulo, empresa, ubicacion, descripcion }) {
+            return (
+                <article className="job-listing-card"
+                    data-modalidad={data.modalidad}
+                    data-nivel={data.nivel}
+                    data-technology={data.technology}
+                >
+                    <div>
+                        <h3>{titulo}</h3>
+                        <small>{empresa} - {ubicacion}</small>
+                        <p>{descripcion}</p>
+                    </div>
+                    <button className="button-apply-job">
+                        Aplicar
+                    </button>
+                </article>
+            );
+
         }
 
         function App() {
             return (
-                <div>
-                    <Saludo colore="blue" nombre="Miguel" />
-                    <Saludo colore="red" nombre="Miguelito" />
-                    <Saludo colore="black" nombre="Angel" />
+                <div className="jobs-listings">
+                    <JobCard
+                        titulo="Desarrollador Frontend React.js"
+                        empresa="Tech Solutions"
+                        ubicacion="Remoto"
+                        descripcion="Buscamos un desarrollador frontend con experiencia en React.js para unirse a nuestro equipo."
+                        data={{ modalidad: "remoto", nivel: "junior", technology: "react" }}
+                    />
                 </div>
             );
         }
@@ -71,10 +91,12 @@
     <main>
         <section class="jobs-search">
             <h1>React.js, primeros pasos</h1>
-
-            <div id="root">
-
             </div>
+        </section>
+        <section>
+            <h2>empleos disponibles</h2>
+            <div id="root"></div>
+
         </section>
 
     </main>
