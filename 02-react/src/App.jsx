@@ -6,6 +6,9 @@ import SearchFormSection from "./components/SearchFormSection.jsx";
 import { JobListings } from "./components/JobListings.jsx";
 
 function App() {
+  const handlePageChange = (page) => {
+    console.log("Cambiando a la página:", page);
+  };
   return (
     <>
       <Header />
@@ -15,7 +18,11 @@ function App() {
 
         <section>
           <JobListings />
-          <Pagination currentPage={1} totalPages={10} />
+          <Pagination
+            currentPage={1}
+            totalPages={10}
+            onPageChange={handlePageChange}
+          />
         </section>
       </main>
 
