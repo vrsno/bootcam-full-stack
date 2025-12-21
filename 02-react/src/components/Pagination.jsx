@@ -1,7 +1,20 @@
-function Pagination() {
+function Pagination({ currentPage = 1, totalPages = 10 }) {
+  //generar array de paginas a mostrar
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+
+  const stylePrevButton = isFirstPage
+    ? { pointerEvents: "none", opacity: 0.5 }
+    : {};
+  const styleNextButton = isLastPage
+    ? { pointerEvents: "none", opacity: 0.5 }
+    : {};
+
   return (
     <nav className="pagination">
-      <a href="#">
+      <a href="#" stule={stylePrevButton}>
         <svg
           width="16"
           height="16"
@@ -16,14 +29,14 @@ function Pagination() {
           <path d="M15 6l-6 6l6 6" />
         </svg>
       </a>
-      <a className="is-active" href="#">
-        1
-      </a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">
+
+      {pages.map((page) => (
+        <a href="#" className={currentPage === page ? "is-active" : ""}>
+          {page}
+        </a>
+      ))}
+
+      <a href="#" style={styleNextButton}>
         <svg
           width="16"
           height="16"
