@@ -4,14 +4,20 @@ import Footer from "./components/Footer.jsx";
 import Pagination from "./components/Pagination.jsx";
 import SearchFormSection from "./components/SearchFormSection.jsx";
 import { JobListings } from "./components/JobListings.jsx";
+import jobsDta from "./data.json";
+
+const RESULT_PER_PAGE = 5;
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5; // Ejemplo de total de páginas
-  console.log("render pagination");
+  const totalPages = Math.ceil(jobsDta.length / RESULT_PER_PAGE);
+
+  const pageResults = jobsDta.slice(
+    (currentPage - 1) * RESULT_PER_PAGE,
+    currentPage * RESULT_PER_PAGE
+  );
 
   const handlePageChange = (page) => {
-    console.log("Cambiando a la página:", page);
     setCurrentPage(page);
   };
   return (
@@ -22,7 +28,7 @@ function App() {
         <SearchFormSection />
 
         <section>
-          <JobListings />
+          <JobListings jobs={pageResults} />
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
