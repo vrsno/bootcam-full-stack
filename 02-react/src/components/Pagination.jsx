@@ -2,8 +2,8 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
   //generar array de paginas a mostrar
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const isFirstPage = currentPage == 1;
-  const isLastPage = currentPage == totalPages;
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
 
   const stylePrevButton = isFirstPage
     ? { pointerEvents: "none", opacity: 0.5 }

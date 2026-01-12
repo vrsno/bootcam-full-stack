@@ -6,8 +6,13 @@ import SearchFormSection from "./components/SearchFormSection.jsx";
 import { JobListings } from "./components/JobListings.jsx";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5; // Ejemplo de total de páginas
+  console.log("render pagination");
+
   const handlePageChange = (page) => {
     console.log("Cambiando a la página:", page);
+    setCurrentPage(page);
   };
   return (
     <>
@@ -19,8 +24,8 @@ function App() {
         <section>
           <JobListings />
           <Pagination
-            currentPage={1}
-            totalPages={10}
+            currentPage={currentPage}
+            totalPages={totalPages}
             onPageChange={handlePageChange}
           />
         </section>
